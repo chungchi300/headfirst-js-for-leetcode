@@ -51,8 +51,6 @@ function numToArr(num) {
   return num.toString().split("");
 }
 var reverse = function(x) {
-  var minn = -(1 << 30) * 2;
-  var maxn = (1 << 30) * 2 - 1;
   let numPart;
   let arr = numToArr(x);
   let ans;
@@ -66,7 +64,8 @@ var reverse = function(x) {
   } else {
     ans = numPart;
   }
-
+  var minn = -(1 << 30) * 2;
+  var maxn = (1 << 30) * 2 - 1;
   if (ans < minn || ans > maxn) {
     return 0;
   } else {

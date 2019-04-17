@@ -2,6 +2,8 @@ https://github.com/hanzichi/leetcode
 
 https://selfboot.cn/2016/07/24/leetcode_guide_why/
 
+https://github.com/MisterBooo/LeetCodeAnimation
+
 # Strategy
 
 Easy to medium
@@ -15,6 +17,8 @@ Microsoft only use medium topic
 1. Stack
 2. Array
 3. Hash Table
+4. Math
+5. String
 
 ## Complex
 

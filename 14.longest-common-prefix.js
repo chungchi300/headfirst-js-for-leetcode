@@ -42,20 +42,23 @@
  */
 var longestCommonPrefix = function(strs) {
   if (!strs.length) return "";
-  let commonPrefixArr = [];
-  //   let shortest = Math.min(...strs.map(str => str.length));
+  let commonPrefix = ""; //for effective data structure for the arr
+  let shortest = Math.min(...strs.map(str => str.length), Number.MAX_VALUE);
 
-  var shortest = strs.reduce(function(pre, item) {
-    return Math.min(pre, item.length);
-  }, Number.MAX_VALUE);
+  // var shortest = strs.reduce(function(pre, item) {
+  //   return Math.min(pre, item.length);
+  // }, Number.MAX_VALUE);
 
   let strsArr = strs.map(str => str.split(""));
-  console.log("strsArr", strsArr);
+  // console.log("strsArr", strsArr, shortest);
   for (let i = 0; i < shortest; i++) {
     let currentCharacter = strsArr[0][i];
     if (strsArr.every(arr => arr[i] === currentCharacter)) {
-      commonPrefixArr.push(currentCharacter);
+      commonPrefix += currentCharacter;
+    } else {
+      //one character no longer the same.
+      break;
     }
   }
-  return commonPrefixArr.join("");
+  return commonPrefix;
 };

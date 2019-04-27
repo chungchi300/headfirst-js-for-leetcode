@@ -37,6 +37,7 @@ const OVER_THOUSANDS = ["", "Thousand", "Million", "Billion", "Trillion"];
 
 // num MUST BE less than 1000 , 0-999,e.g 996
 var threePack = function(num) {
+  console.log("three pack", num);
   let res = "";
   //res Nine Hundread ,num before 996, after 96
   if (num >= 100) {
@@ -44,7 +45,7 @@ var threePack = function(num) {
     res += HUNDREDS[0] + " ";
     num %= 100;
   }
-  //res 9,num before 996, after 96
+  //res 9,num before 996, after 96, > 20,30,40,50,60,70,80,90 mapping
   if (num >= 20) {
     res += TWENTIES[Math.floor(num / 10)] + " ";
     num %= 10;
@@ -59,6 +60,14 @@ var threePack = function(num) {
  * @param {number} num
  * @return {string}
  */
+var numberNeedConversion = function(num, divider) {
+  if (num < divider) {
+    return true;
+  } else {
+    return false;
+  }
+};
+//very intuitive!
 var numberToWords = function(num) {
   if (num === 0) {
     return BASIC[0];
@@ -66,10 +75,13 @@ var numberToWords = function(num) {
 
   let ans = "";
   for (let i = OVER_THOUSANDS.length - 1; i >= 0; i -= 1) {
+    //from trillion to zero conversion
     const divider = Math.pow(1000, i);
-    if (num < divider) {
+    console.log("divider", divider);
+    if (numberNeedConversion(num, divider)) {
       continue;
     }
+
     ans += threePack(Math.floor(num / divider));
     ans += OVER_THOUSANDS[i] === "" ? "" : OVER_THOUSANDS[i] + " ";
     num %= divider;

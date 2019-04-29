@@ -12,26 +12,38 @@
 
 This is an example of text justification
 */
+class Row {
+  constructor() {
+    this.items = [];
+    this.letters = 0;
+  }
+}
 var greedyAssignWordsToRows = function(words, maxWidth) {
-  const rows = [[]];
+  let rows = [];
   //using array as object
   //[[letters:0]]
-  rows[0].letters = 0;
+  let firstItem = new Row();
+  rows[0] = firstItem;
   for (let word of words) {
     //using original row,res[0]
     let row = rows[rows.length - 1];
     //0&0 +0&4 > 16
-    if (row.length && row.letters + row.length + word.length > maxWidth) {
-      rows.push([]);
+    // console.log(row.items.length, row.letters, row.items.length);
+    if (
+      row.items.length &&
+      row.letters + row.items.length + word.length > maxWidth
+    ) {
+      //   console.log("creating new row");
+      rows.push(new Row());
       row = rows[rows.length - 1];
       row.letters = 0;
     }
     //adding the word
-    row.push(word);
+    row.items.push(word);
     //and then add the count
     row.letters += word.length;
   }
-  console.log("res", rows);
+  //   console.log("res", rows);
   return rows;
 };
 var fullJustify = function(words, maxWidth) {
@@ -39,19 +51,22 @@ var fullJustify = function(words, maxWidth) {
   let res = [];
   for (let r = 0; r < rows.length; r++) {
     let row = rows[r];
-    if (row.length === 1 || r === rows.length - 1) {
+    // console.log("row", row);
+    if (row.items.length === 1 || r === rows.length - 1) {
       res[r] =
-        row.join(" ") + " ".repeat(maxWidth - row.letters - row.length + 1);
+        row.items.join(" ") +
+        " ".repeat(maxWidth - row.letters - row.items.length + 1);
       continue;
     }
-    let line = row[0];
+    let line = row.items[0];
     let spaces = maxWidth - row.letters;
-    let minSpaces = " ".repeat(Math.floor(spaces / (row.length - 1)));
-    let addSpace = spaces % (row.length - 1);
-    for (let w = 1; w < row.length; w++) {
-      line += minSpaces + (w <= addSpace ? " " : "") + row[w];
+    let minSpaces = " ".repeat(Math.floor(spaces / (row.items.length - 1)));
+    let addSpace = spaces % (row.items.length - 1);
+    for (let w = 1; w < row.items.length; w++) {
+      line += minSpaces + (w <= addSpace ? " " : "") + row.items[w];
     }
     res[r] = line;
   }
+  //   console.log("the result", res);
   return res;
 };

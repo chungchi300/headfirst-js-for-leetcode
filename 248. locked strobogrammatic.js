@@ -5,7 +5,7 @@ var findStrobogrammatic = function(n) {
 var helper = function(n, m) {
   if (n == 0) return [""];
   if (n == 1) return ["0", "1", "8"];
-
+  //e.g 2, helper=>(0,2) => [""]
   var list = helper(n - 2, m);
 
   var res = [];
@@ -23,3 +23,4 @@ var helper = function(n, m) {
 
   return res;
 };
+100100tdtdtdrgd

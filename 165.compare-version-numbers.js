@@ -8,7 +8,4 @@
  * @param {string} version2
  * @return {number}
  */
-var compareVersion = function(version1, version2) {
-    
-};
-
+var compareVersion = function(version1, version2) {};

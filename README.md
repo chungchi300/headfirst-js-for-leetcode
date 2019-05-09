@@ -44,7 +44,7 @@ Facebook,Microsoft only use easy easy,medium topic in interview.
 #### Rewrite
 
 1. When you see the code don't follow [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle).
-2. When you see there is better data structure.
+2. When you see there is [better data structure](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html).
 
 The rewrite should don't significantly reduce the performance(make the runtime drop to below 50%) but it is acceptable and normal to increase memory usage.
 

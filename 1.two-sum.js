@@ -64,8 +64,8 @@ var twoSum = function(nums, target) {
 };
 /* using less in memory */
 /*
-  [undefined,undefined,undefined,undefined,undefined,undefined,0]
-  store remainderVal at index, and the unMatchedItemIndex
+
+ [undefined,undefined,0]
 
   javascript array with specific index is much faster then object hashed map
 */

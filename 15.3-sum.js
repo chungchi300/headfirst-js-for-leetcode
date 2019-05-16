@@ -1,49 +1,50 @@
+// Source    : https://leetcode.com/problems/3sum/
+// Author    : Han Zichi
+// Date      : 2017-10-08
+// Complexity: O(n^2)
+
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-
-// we are finding sum with zero
-/*
-i,j,k iterator
-i is the main sequence
-
-
-sorted array!
-*/
 var threeSum = function(nums) {
-  var rtn = [];
-  if (nums.length < 3) {
-    return rtn;
-  }
-  nums = nums.sort(function(a, b) {
-    return a - b;
-  });
-  for (var i = 0; i < nums.length - 2; i++) {
-    if (nums[i] > 0) {
-      return rtn;
-    }
-    if (i > 0 && nums[i] == nums[i - 1]) {
-      continue;
-    }
-    for (var j = i + 1, k = nums.length - 1; j < k; ) {
-      if (nums[i] + nums[j] + nums[k] === 0) {
-        rtn.push([nums[i], nums[j], nums[k]]);
-        j++;
-        k--;
-        //This is finding two sum in sorted array
-        while (j < k && nums[j] == nums[j - 1]) {
-          j++;
-        }
-        while (j < k && nums[k] == nums[k + 1]) {
-          k--;
-        }
-      } else if (nums[i] + nums[j] + nums[k] > 0) {
-        k--;
+  nums.sort((a, b) => a - b);
+
+  let ans = [];
+  let len = nums.length;
+
+  // enumerate 列舉 the array, and assume the item to be the smallest one
+  for (let i = 0; i < len; i++) {
+    // have already enumerate the item as the smallest one among the three
+    // then continue
+    if (i && nums[i] === nums[i - 1]) continue;
+
+    // the sum of another two should be
+    let target = -nums[i];
+
+    // the indexes of another two
+    let [start, end] = [i + 1, len - 1];
+
+    while (start < end) {
+      let sum = nums[start] + nums[end];
+
+      if (sum > target) {
+        end--;
+      } else if (sum < target) {
+        start++;
       } else {
-        j++;
+        ans.push([nums[i], nums[start], nums[end]]);
+
+        // remove the duplication
+        while (nums[start] === nums[start + 1]) start++;
+        start++;
+
+        // remove the duplication
+        while (nums[end] === nums[end - 1]) end--;
+        end--;
       }
     }
   }
-  return rtn;
+
+  return ans;
 };

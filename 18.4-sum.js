@@ -1,45 +1,68 @@
+// Source : https://leetcode.com/problems/4sum/
+// Author : Han Zichi
+// Date   : 2016-02-04
+
+// 400ms 水过，基本是 worst solution
+// 思路是先计算出两两的和，存入 hash 数组，把和当做 key
+// 然后再次枚举，看做 (a+b)=target-(c+d) 形式
+// 用 hashStr 保存答案
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
 var fourSum = function(nums, target) {
-  var ret = [];
-
-  if (nums.length == 0) return ret;
-
   nums.sort(function(a, b) {
     return a - b;
   });
 
-  for (var i = 0; i < nums.length; i++) {
-    var target2 = target - nums[i];
+  var hash = [];
 
-    for (var j = i + 1; j < nums.length; j++) {
-      var target3 = target2 - nums[j];
+  var len = nums.length;
 
-      var front = j + 1;
-      var back = nums.length - 1;
+  for (var i = 0; i < len; i++)
+    for (var j = i + 1; j < len; j++) {
+      var a = nums[i],
+        b = nums[j],
+        c = a + b;
 
-      while (front < back) {
-        var sum = nums[front] + nums[back];
-
-        if (sum < target3) front++;
-        else if (sum > target3) back--;
-        else {
-          var temp = new Array(4);
-          temp[0] = nums[i];
-          temp[1] = nums[j];
-          temp[2] = nums[front];
-          temp[3] = nums[back];
-          ret.push(temp);
-
-          while (front < back && nums[front] === temp[2]) front++;
-
-          while (front < back && nums[back] === temp[3]) back--;
-        }
-      }
-
-      while (j + 1 < nums.length && nums[j + 1] === nums[j]) ++j;
+      if (hash[c] === undefined) hash[c] = [[i, j]];
+      else hash[c].push([i, j]);
     }
 
-    while (i + 1 < nums.length && nums[i + 1] === nums[i]) ++i;
-  }
+  var ans = [];
 
-  return ret;
+  var hashSet = {};
+
+  for (var i = 0; i < len; i++)
+    for (var j = i + 1; j < len; j++) {
+      var a = nums[i],
+        b = nums[j],
+        sum = target - a - b;
+
+      if (!hash[sum]) continue;
+
+      for (var k = 0, _len = hash[sum].length; k < _len; k++) {
+        var item = hash[sum][k];
+
+        if (item[0] === i || item[1] === i || item[0] === j || item[1] === j)
+          continue;
+
+        var c = nums[item[0]],
+          d = nums[item[1]];
+
+        var tmp = [a, b, c, d].sort(function(a, b) {
+          return a - b;
+        });
+
+        var str = tmp.join(",");
+        if (!hashSet[str]) {
+          hashSet[str] = true;
+          ans.push(tmp);
+        }
+      }
+    }
+
+  return ans;
 };

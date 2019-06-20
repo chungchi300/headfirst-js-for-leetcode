@@ -12,6 +12,14 @@
 Sub problem
 Need to know how to calculate char from number
 String.fromCharCode(65,66,67)=>A,B,C
+
+hash mapping 
+A  A   A
+65 65  65=>but it has addition in final
+1  1   1 => 3
+
+
+
 */
 function getCharCodeFromNum(n) {
   if (n > 26) {

@@ -13,7 +13,7 @@
 splice is functions has side effect,the returned val is an array that include the delete val
 
 one of the challenging in this  question is looping and changing the length of the array
-
+https://coderwall.com/p/prvrnw/remove-items-from-array-while-iterating-over-it
  */
 var removeElement = function(nums, val) {
   let totalNumThatWithoutSpecificValInNums = 0;

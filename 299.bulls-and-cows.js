@@ -19,16 +19,16 @@ function getHint(secret, guess) {
   for (var i = 0; i < 10; i++) map[i] = 0;
   /*
 getHint("12","21");
-{0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
-{0: 0, 1: 1, 2: -1, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+first loop push 1 of secret , 2 of guess{0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
+second loop get 1 and 2 neutralized and add one {0: 0, 1: 1, 2: -1, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
 
-every letter get neutralized
   */
   for (i = 0; i < secret.length; i++) {
     if (secret[i] === guess[i]) A++;
     else {
+      //console.log(map);
       map[secret[i]]++;
-      //order unimportance
+      //order unimportance,when it is zero, it means it must have been neutralized before
       B += map[secret[i]] <= 0 ? 1 : 0;
 
       //order unimportance
@@ -37,5 +37,5 @@ every letter get neutralized
     }
   }
 
-  return A + 'A' + B + 'B';
+  return A + "A" + B + "B";
 }

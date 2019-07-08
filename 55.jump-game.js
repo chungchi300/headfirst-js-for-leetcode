@@ -12,10 +12,12 @@ function canJump(nums) {
 
   for (let i = 1; i < nums.length; i++) {
     if (max < i) return false; // max steps cannot reach position i
-    //max step from next i, nums[i]+existing pos, not allow to select less position by comparing the max
+    //max step from next i, nums[i]+existing pos(because already passed the test)
+
+    //not allow to select less position by comparing the max
     max = Math.max(nums[i] + i, max);
     //
-    console.log("max", max, nums[i] + i);
+    // console.log("max", max, nums[i] + i);
   }
 
   return true;

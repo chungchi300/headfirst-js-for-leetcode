@@ -7,6 +7,14 @@
  * @param {number[]} nums
  * @return {boolean}
  */
+
+/*
+[0,1,2,3,4]
+[2,3,1,1,4]
+[y,y,y,y,y]
+[2,4,4,4,8]-important
+
+ */
 function canJump(nums) {
   let max = nums[0];
 

@@ -1,0 +1,50 @@
+/*
+ * @lc app=leetcode id=334 lang=javascript
+ *
+ * [334] Increasing Triplet Subsequence
+ */
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+/*
+O(1) space complexity. that is the hard part
+1,5,4,5,6
+
+no need to be successive
+
+1,100,7,100,9
+*/
+
+var increasingTriplet = function(nums) {
+  let min = nums[0];
+  let secondMinUpdatedAfterMin = Infinity;
+  for (let val of nums) {
+    // console.log({ val, min, secondMinUpdatedAfterMin });
+    if (val <= min) {
+      min = val;
+    } else if (val <= secondMinUpdatedAfterMin) {
+      secondMinUpdatedAfterMin = val;
+    } else {
+      // min < secondMinUpdatedAfterMin < val
+      return true;
+    }
+  }
+  return false;
+};
+// var increasingTriplet = function(nums) {
+//   let increasingTime = 0;
+//   let prev = -1;
+//   for (let num of nums) {
+//     if (num > prev) {
+//       increasingTime++;
+//       if (increasingTime == 3) {
+//         return true;
+//       }
+//     } else {
+//       increasingTime = 1;
+//     }
+//     prev = num;
+//   }
+//   return false;
+// };

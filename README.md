@@ -11,11 +11,12 @@ Facebook,Microsoft only use easy easy,medium topic in interview.
 ### Normal and high frequency usage in daily life
 
 1. Stack
-2. Array
-3. Hash Table
-4. Math
-5. String
-6. Linked List
+2. Queue
+3. Array
+4. Hash Table
+5. Math
+6. String
+7. Linked List
 
 ### Complex
 

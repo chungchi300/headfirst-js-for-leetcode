@@ -1,3 +1,19 @@
+# Schedule
+
+1. 400(already 103), all get answer(Know)
+2. 250(Do All easy, remember classic answer by teaching)
+3. 250(Do All Medium)
+4. 250(Do All easy and medium)
+
+1150
+(One Day 10 question,3.5 hour per day)
+
+# Level of correct level
+
+1. Know related correct data structure&algorithm
+2. Correct Thinking Method
+3. Get the best solution
+
 # Strategy
 
 ## Select Proper difficultly
@@ -78,12 +94,10 @@ Far more better then online editor.Highly recommended if you use vs-code before
 
 https://github.com/MisterBooo/LeetCodeAnimation
 
-# Thanks
+# Ref Book
 
-Most of the answer are copied/inspired from [hanzichi](https://github.com/hanzichi/leetcode) and different answer in discussion board of leetcode.
-
-# Wish
-
-Wish you can learn a lot of knowledge and cultivate good habits in this repository.
-
-I wish you use this power to do the good thing in your daily life and don't be evil when you are capable.
+剑指 offer,
+编程珠玑,
+编程之美
+大话数据结构
+算法

@@ -16,17 +16,16 @@ no need to be successive
 1,100,7,100,9
 */
 
-var increasingTriplet = function(nums) {
-  let min = nums[0];
-  let secondMinUpdatedAfterMin = Infinity;
-  for (let val of nums) {
-    // console.log({ val, min, secondMinUpdatedAfterMin });
-    if (val <= min) {
-      min = val;
-    } else if (val <= secondMinUpdatedAfterMin) {
-      secondMinUpdatedAfterMin = val;
-    } else {
-      // min < secondMinUpdatedAfterMin < val
+var increasingTriplet = function (nums) {
+  let min = Number.MAX_VALUE;
+  let secondMin = Number.MAX_VALUE;
+  for (let num of nums) {
+    //the first min act as last indexed sorted element, then do the search in the rest element
+    if (num <= min) {
+      min = num;
+    } else if (num < secondMin) {
+      secondMin = num;
+    } else if (num > secondMin) {
       return true;
     }
   }

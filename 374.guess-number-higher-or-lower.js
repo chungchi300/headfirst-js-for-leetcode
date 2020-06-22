@@ -15,17 +15,16 @@
 var guessNumber = function (n) {
   let start = 1;
   let end = n;
-  while (start + 1 < end) {
+  while (start <= end) {
     let midNumber = parseInt((end - start) / 2) + start;
     console.log("guessing", midNumber);
     if (guess(midNumber) == 0) {
       return midNumber;
     } else if (guess(midNumber) == 1) {
-      start = midNumber;
+      start = midNumber + 1;
     } else {
-      end = midNumber;
+      end = midNumber - 1;
     }
   }
-  if (guess(start) == 0) return start;
-  return end;
+  throw Error("not found");
 };

@@ -17,7 +17,7 @@ var guessNumber = function (n) {
   let end = n;
   while (start <= end) {
     let midNumber = parseInt((end - start) / 2) + start;
-    console.log("guessing", midNumber);
+    // console.log("guessing", midNumber);
     if (guess(midNumber) == 0) {
       return midNumber;
     } else if (guess(midNumber) == 1) {

@@ -55,7 +55,7 @@ var romanToInt = function(s) {
 };
  */
 
-var romanToInt = function(s) {
+var romanToInt = function (s) {
   var hash = {};
   hash["I"] = 1;
   hash["X"] = 10;
@@ -69,9 +69,9 @@ var romanToInt = function(s) {
 
   for (var i = 0, len = s.length; i < len; i++) {
     //e.g I
-    var item = hash[s[i]];
+    var itemWhichIsNumberFoundedInHash = hash[s[i]];
 
-    var nextItem = i + 1 === len ? 0 : hash[s[i + 1]];
+    var nextItemWhichIsNumberFoundedInHash = i + 1 === len ? 0 : hash[s[i + 1]];
     /*
     finding the special that when next item is bigger then previous, it must be 
    IV: 4,
@@ -81,12 +81,13 @@ var romanToInt = function(s) {
     CD: 400,
     CM: 900
     */
-    if (nextItem > item) {
-      sum += nextItem - item;
+    if (nextItemWhichIsNumberFoundedInHash > itemWhichIsNumberFoundedInHash) {
+      sum +=
+        nextItemWhichIsNumberFoundedInHash - itemWhichIsNumberFoundedInHash;
       //move two character
       i++;
     } else {
-      sum += item;
+      sum += itemWhichIsNumberFoundedInHash;
     }
   }
 

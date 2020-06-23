@@ -42,24 +42,21 @@
     hash is for finding proper index to append new item to one of the array in 2d by using the unique key of anagram(the sorted key)
 
 */
-var groupAnagrams = function(strs) {
+var groupAnagrams = function (strs) {
   var ans = [];
-  var hash = {};
+  var hashFromCharsToArrayIndexPos = {};
 
-  strs.forEach(function(item) {
-    var str = item
-      .split("")
-      .sort()
-      .join("");
+  strs.forEach(function (item) {
+    var str = item.split("").sort().join("");
     //str is the the same for all anagram
-    if (hash[str] === undefined) {
-      //mapping the index
-      hash[str] = ans.length;
+    if (hashFromCharsToArrayIndexPos[str] === undefined) {
+      //get the procedural unique index for adding the element
+      hashFromCharsToArrayIndexPos[str] = ans.length;
       //first item
       ans.push([item]);
     } else {
       //second item
-      ans[hash[str]].push(item);
+      ans[hashFromCharsToArrayIndexPos[str]].push(item);
     }
   });
 

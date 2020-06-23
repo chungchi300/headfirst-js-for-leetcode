@@ -9,7 +9,7 @@ const charMappings = [
     "6": "VI",
     "7": "VII",
     "8": "VIII",
-    "9": "IX"
+    "9": "IX",
   },
   {
     "0": "",
@@ -21,7 +21,7 @@ const charMappings = [
     "6": "LX",
     "7": "LXX",
     "8": "LXXX",
-    "9": "XC"
+    "9": "XC",
   },
   {
     "0": "",
@@ -33,24 +33,25 @@ const charMappings = [
     "6": "DC",
     "7": "DCC",
     "8": "DCCC",
-    "9": "CM"
+    "9": "CM",
   },
   {
     "0": "",
     "1": "M",
     "2": "MM",
-    "3": "MMM"
-  }
+    "3": "MMM",
+  },
 ];
-var intPosToRomanChar = function(position, char) {
+var intPosToRomanChar = function (position, char) {
   return charMappings[position - 1][char];
 };
-var intToRoman = function(num) {
+var intToRoman = function (num) {
   let numStr = "" + num;
   let numChars = numStr.split("");
   let ans = "";
-
+  /*O(N) */
   for (let i = 0; i < numChars.length; i++) {
+    //really good skill
     const digitPositionOfNum = numChars.length - i;
 
     const numChar = numChars[i];

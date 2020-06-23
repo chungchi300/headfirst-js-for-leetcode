@@ -50,10 +50,14 @@ function getVowelArr(len, arr) {
   }
   return vowelArr;
 }
-var reverseVowels = function(s) {
+var reverseVowels = function (s) {
   var arr = s.split(""),
     len = arr.length;
-  //first in last out
+  //first in last out, that why reverse order
+  /*
+  time complexity 2n,
+  
+  */
   let vowelStack = getVowelArr(len, arr);
 
   var ansStr = "";

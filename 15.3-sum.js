@@ -7,7 +7,8 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
+/* sorted three sum*/
+var threeSum = function (nums) {
   nums.sort((a, b) => a - b);
 
   let ans = [];

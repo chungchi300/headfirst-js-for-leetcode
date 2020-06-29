@@ -41,15 +41,16 @@
  * one storage for normal stack
  * one storage for min stack that minimal always on top
  *
- *
- *
+ * stack:    -2 0 -3
+ * minStack: -2 -3
+ * stupidMinStackWhichStoreEachStepMin: -2 -2 -3
  */
 
 // @lc code=start
 /**
  * initialize your data structure here.
  */
-var MinStack = function() {
+var MinStack = function () {
   this.normalStack = [];
   this.minStack = [];
 };
@@ -58,7 +59,7 @@ var MinStack = function() {
  * @param {number} x
  * @return {void}
  */
-MinStack.prototype.push = function(x) {
+MinStack.prototype.push = function (x) {
   this.normalStack.push(x);
   if (
     this.minStack.length === 0 ||
@@ -72,7 +73,7 @@ MinStack.prototype.push = function(x) {
 /**
  * @return {void}
  */
-MinStack.prototype.pop = function() {
+MinStack.prototype.pop = function () {
   let top = this.top();
   this.normalStack.pop();
   if (top === this.minStack[this.minStack.length - 1]) {
@@ -85,14 +86,15 @@ MinStack.prototype.pop = function() {
 /**
  * @return {number}
  */
-MinStack.prototype.top = function() {
+MinStack.prototype.top = function () {
   return this.normalStack[this.normalStack.length - 1];
 };
 
 /**
  * @return {number}
  */
-MinStack.prototype.getMin = function() {
+MinStack.prototype.getMin = function () {
+  //O(N) == =1
   return this.minStack[this.minStack.length - 1];
 };
 

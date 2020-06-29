@@ -65,6 +65,7 @@
  * @param {string[]} tokens
  * @return {number}
  */
+//O(1)
 class MyStack {
   constructor() {
     this._storage = {};
@@ -101,7 +102,7 @@ const evaluate = (x, y, op) => {
       return (x / y) | 0; // Math.trunc()
   }
 };
-var evalRPN = function(tokens) {
+var evalRPN = function (tokens) {
   let numberStack = new MyStack();
 
   for (let token of tokens) {

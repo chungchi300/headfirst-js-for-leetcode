@@ -1,16 +1,18 @@
-var plusOne = function(digits) {
+var plusOne = function (digits) {
+  //start at last position 1,2,3 => the 3 will be visit first,
   for (var i = digits.length - 1; i >= 0; i--) {
     //always add one
-    digits[i]++;
-    if (digits[i] > 9) {
-      //add one to original digit, and then add next digit by not return
-      //if it is first digits, make all to 0
-      digits[i] = 0;
-    } else {
+    console.log(digits[i]);
+    if (digits[i] < 9) {
+      //case 1 , 1011 => 1012
+      digits[i]++;
       return digits;
+    } else {
+      //case 2, 1099 => 1100, the next cycle will add one
+      digits[i] = 0;
     }
   }
-  //unshift 1 to the first
+  //append 1 to the first, case3 9999=> 10000 , the case that all is 9
   digits.unshift(1);
   return digits;
 };

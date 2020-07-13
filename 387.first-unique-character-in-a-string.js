@@ -48,8 +48,8 @@
   Sol 2:
   for each character, find the last index from reverse, if it is searched, remove it
 
-*/
-var firstUniqChar = function(s) {
+  var firstUniqChar = function (s) {
+  //O(N^2)
   let repeatingCharacterByCharacter = {};
   for (let i = 0; i < s.length; i++) {
     let character = s[i];
@@ -60,6 +60,24 @@ var firstUniqChar = function(s) {
       return i;
     } else {
       repeatingCharacterByCharacter[character] = true;
+    }
+  }
+  return -1;
+};
+
+*/
+//More stable, O(2n)=>O(n)
+var firstUniqChar = function (s) {
+  let occurenceByCharKey = new Array(26).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    occurenceByCharKey[s.charAt(i).charCodeAt(0) - "a".charCodeAt(0)]++;
+  }
+  // console.log({ occurenceByCharKey });
+  for (let i = 0; i < s.length; i++) {
+    let theChar = s.charAt(i);
+    // console.log({ s, i, theChar });
+    if (occurenceByCharKey[theChar.charCodeAt(0) - "a".charCodeAt(0)] == 1) {
+      return i;
     }
   }
   return -1;

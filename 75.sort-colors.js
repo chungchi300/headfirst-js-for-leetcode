@@ -53,16 +53,17 @@ function swap(nums, i, j) {
 }
 /*
 
-0, 0,1,
+3 value type 2 pointer sorting method
 
 */
+
 var sortColors = function (nums) {
   if (nums == null || nums.length == 0) return;
-  //left control the position of red(0)
+  //left control the position of green(1)
   let left = 0;
   //right control the position of blue(2)
   let right = nums.length - 1;
-  //index control the position of green(1)
+
   let index = 0;
   while (index <= right) {
     if (nums[index] == 0) {
